@@ -1,0 +1,19 @@
+{
+  "name": "test-4",
+  "version": "1.0.0",
+  "description": "Given the test_data1.csv file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gill142/test-4.git"
+  },
+  "author": "Kamaljeet Gill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gill142/test-4/issues"
+  },
+  "homepage": "https://github.com/gill142/test-4#readme"
+}

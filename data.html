@@ -1,0 +1,64 @@
+<!-- component template -->
+<html>
+
+<head>
+    <title> Getting data </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+
+    <link href="style2.css" rel="stylesheet">
+</head>
+
+<body>
+    <script type="text/x-template" id="grid-template">
+        <table>
+            <thead>
+                <tr>
+                    <th v-for="key in columns" @click="sortBy(key)" :class="{ active: sortKey == key }">
+                        {{ key | capitalize }}
+                        <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+                    </span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="entry in filteredData">
+                    <td v-for="key in columns">
+                        {{entry[key]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+
+    <!-- demo root element -->
+    <div id="demo">
+        <div id="app">
+            <div v-if="!arrays[0]">
+                <h2>Select a File</h2>
+                <input type="file" @change="onFileChange">
+            </div>
+            <div v-else>
+                <table id="example-1">
+                    <tr v-for="item in arrays">
+                        <td v-for="clmn in item">{{ clmn}}</td>
+                    </tr>
+                </table>
+
+                <button @click="removeImage">Remove image</button>
+            </div>
+        </div>
+        <form id="search">
+            Search <input name="query" v-model="searchQuery">
+        </form>
+        <demo-grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery">
+        </demo-grid>
+
+        <line-chart></line-chart>
+    </div>
+    
+    <script src="scripttest.js"></script>
+</body>
+
+</html>
